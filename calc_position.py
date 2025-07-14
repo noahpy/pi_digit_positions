@@ -3,7 +3,11 @@ import re
 with open("pi_million", "r") as f:
     text = f.read()
 
-number = int(input("Search for: "))
+try:
+    number = int(input("Search for: "))
+except ValueError:
+    print("Input has to be a number")
+    exit()
 
 match = re.search(rf"{number}", text)
 
