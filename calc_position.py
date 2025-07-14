@@ -1,6 +1,21 @@
+import re
 
+with open("pi_million", "r") as f:
+    text = f.read()
 
-i = int(input("Enter position: "))
+try:
+    number = int(input("Search for: "))
+except ValueError:
+    print("Input has to be a number")
+    exit()
+
+match = re.search(rf"{number}", text)
+
+if match:
+    i = int(match.start(0)) + 1
+else:
+    print("Number could not be found")
+    exit()
 
 num_rows = 46
 num_cols = 52
